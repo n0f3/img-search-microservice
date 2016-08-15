@@ -30,25 +30,31 @@ app.get('/api/latest/imagesearch', (req, res) => {
 
 app.get('/api/imagesearch/:searchQuery', (req, res) => {
   if(req.params.searchQuery) {
-    const offsetQuery = 0;
-    const count = 10;
-    if(!_.isEmpty(req.query) && _.has(req.query, 'offset')) {
-      offsetQuery = parseInt(req.query.offset, 10);
+    var offsetQuery = 0;
+    var countQuery = 150;
+    if(!_.isEmpty(req.query)) {
+      if(_.has(req.query, 'offset')) {
+        offsetQuery = parseInt(req.query.offset, 10);
+      }
+      if(_.has(req.query, 'count')) {
+        countQuery = parseInt(req.query.count, 10);
+      }
     }
-    imageSearch(req.params.searchQuery, offsetQuery, count)
+    imageSearch(req.params.searchQuery, offsetQuery, countQuery)
       .then((data) => {
-        const searchObj = new SearchHistory();
+        var searchObj = new SearchHistory();
         searchObj.fillSearch(req.params.searchQuery, new Date(Date.now()));
         searchObj.save((err) => {
           if(err) throw err;
           console.log(`Saved search obj: ${JSON.stringify(searchObj.toObject())}`)
         });
-        const returnData = data.value.map((obj) => {
+        console.log(data.value.slice(0, 10));
+        var returnData = data.value.slice(0, 10).map((currObj) => {
           return {
-            imgUrl: obj.contentUrl,
-            snippet: obj.name,
-            thumbnail: obj.thumbnailUrl,
-            context: obj.hostPageUrl
+            imgUrl: currObj.contentUrl,
+            snippet: currObj.name,
+            thumbnail: currObj.thumbnailUrl,
+            context: currObj.hostPageUrl
           }
         });
         res.send(returnData);
