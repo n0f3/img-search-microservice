@@ -33,7 +33,7 @@ app.get('/api/imagesearch/:searchQuery', (req, res) => {
     const offsetQuery = 0;
     const count = 10;
     if(!_.isEmpty(req.query) && _.has(req.query, 'offset')) {
-      offsetQuery = Number(req.query.offset);
+      offsetQuery = parseInt(req.query.offset, 10);
     }
     imageSearch(req.params.searchQuery, offsetQuery, count)
       .then((data) => {
