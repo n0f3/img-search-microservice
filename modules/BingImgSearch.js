@@ -1,5 +1,6 @@
-var request = require('request-promise');
-var _ = require('underscore');
+"use strict";
+const request = require('request-promise');
+const _ = require('underscore');
 const queryObj = {};
 
 const config = {

@@ -1,7 +1,8 @@
-var mongoose = require('mongoose'),
+"use strict";
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var searchSchema = new Schema({
+let searchSchema = new Schema({
   searchQuery: { type: String, default: '' },
   searchTime: { type: String, default: '' }
 });
@@ -19,6 +20,6 @@ searchSchema.options.toObject.transform = function (doc, ret, options) {
   return ret;
 }
 
-var SearchHistory = mongoose.model('SearchHistory', searchSchema);
+let SearchHistory = mongoose.model('SearchHistory', searchSchema);
 
 module.exports = SearchHistory;
