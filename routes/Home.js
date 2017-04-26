@@ -1,5 +1,5 @@
 const homeRequestCallback = (req, res) => {
-  res.send('Hello img search');
+  res.render('index');
 }
 
 module.exports = homeRequestCallback;
