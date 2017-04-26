@@ -5,7 +5,7 @@ Express based microservice API that lets you search for images on the web and br
 ## Api documentation
 
 * `GET /api/imagesearch/:searchQuery`
-  Used to initiate a new image search with the desired query string. Returns a list of JSON objects:
+  Used to initiate a new image search with the desired query string. It accepts to optional request query params, `count` (number between 1 and 10 inclusive) if you want to limit the number of results per page returned, and `offset` (0 based index) to paginate through results of query. Returns a list of JSON objects:
 ```
 [
   {
