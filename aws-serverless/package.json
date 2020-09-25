@@ -2,18 +2,27 @@
   "name": "aws-serverless",
   "version": "1.0.0",
   "description": "Serverless webpack example using Typescript",
-  "main": "handler.js",
+  "main": "imageSearch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "source-map-support": "^0.5.19"
+    "@azure/cognitiveservices-imagesearch": "^3.0.1",
+    "@azure/ms-rest-azure-js": "^2.0.1",
+    "@types/node-fetch": "^2.5.7",
+    "@types/validator": "^13.1.0",
+    "node-fetch": "^2.6.1",
+    "source-map-support": "^0.5.19",
+    "unfetch": "^4.1.0",
+    "validator": "^13.1.17"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.62",
     "@types/node": "^14.11.2",
     "@types/serverless": "^1.78.0",
     "fork-ts-checker-webpack-plugin": "^5.2.0",
+    "serverless-dotenv-plugin": "^3.0.0",
+    "serverless-offline": "^6.8.0",
     "serverless-webpack": "^5.3.5",
     "ts-loader": "^8.0.4",
     "ts-node": "^9.0.0",
@@ -21,6 +30,6 @@
     "webpack": "^4.44.2",
     "webpack-node-externals": "^2.5.2"
   },
-  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "author": "Alessandro Metta",
   "license": "MIT"
 }
