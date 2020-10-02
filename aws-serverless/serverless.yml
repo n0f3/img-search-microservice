@@ -36,6 +36,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:PutItem
+        - dynamodb:GetItem
       Resource: arn:aws:dynamodb:us-east-1:396626227601:table/imgsearch
   apiGateway:
     minimumCompressionSize: 1024
@@ -52,10 +53,10 @@ functions:
             parameters:
               paths:
                 searchQuery: true
-  latestImageSearch:
-    handler: imageSearch.latest
+  history:
+    handler: imageSearch.history
     events:
       - http:
           method: 'get'
-          path: '/api/latest/imagesearch'
+          path: '/api/history/imagesearch'
     
