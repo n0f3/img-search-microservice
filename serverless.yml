@@ -1,12 +1,12 @@
 service:
   name: aws-serverless
 resources:
-  Resource:
+  Resources:
     ImgSearchTable:
-      Type: AWS::DynamoDB::Table
+      Type: 'AWS::DynamoDB::Table'
       Properties:
         TableName: imgsearch
-        AttributeDefitions:
+        AttributeDefinitions:
           -
             AttributeName: id
             AttributeType: S
@@ -37,7 +37,7 @@ provider:
       Action:
         - dynamodb:PutItem
         - dynamodb:GetItem
-      Resource: arn:aws:dynamodb:us-east-1:396626227601:table/imgsearch
+      Resource: "arn:aws:dynamodb:us-east-1:396626227601:table/imgsearch"
   apiGateway:
     minimumCompressionSize: 1024
   environment:
