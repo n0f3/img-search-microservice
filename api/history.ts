@@ -36,8 +36,7 @@ export const retrieveHistory = async () => {
     }
     const result = await dynamoDB.scan(params);
     const items = await result.promise();
-    console.log('scanned items: ', items.Items.sort((item1, item2) => item1.time < item2.time))
-    return Promise.resolve(items.Items.sort((item1, item2) => new Date(item1.time) - new Date(item2.time)));
+    return Promise.resolve(items.Items.sort((item1, item2) => new Date(item2.time) - new Date(item1.time)));
   } catch (e) {
     console.error(e);
     throw e;
